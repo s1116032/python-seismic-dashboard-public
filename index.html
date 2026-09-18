@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>震測事件互動儀表板</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="app-header">
+      <div class="app-title">
+        <h1>震測事件互動儀表板</h1>
+        <p>地圖選點 → 真實強地動波形檢視，含 P / S 到時標註</p>
+      </div>
+
+      <div class="controls">
+        <label for="event-select">地震事件</label>
+        <select id="event-select"></select>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section id="map" class="map"></section>
+
+      <section class="panel">
+        <div id="station-info" class="station-info">
+          載入中...
+        </div>
+
+        <div class="waveform-controls">
+          <button id="play-button" class="button" type="button">
+            播放波形
+          </button>
+          <span id="play-status" class="play-status"></span>
+        </div>
+
+        <div class="component-controls">
+          <span class="component-label">分量</span>
+          <button
+            type="button"
+            class="component-button active"
+            data-component="U"
+          >
+            U
+          </button>
+          <button
+            type="button"
+            class="component-button"
+            data-component="N"
+          >
+            N
+          </button>
+          <button
+            type="button"
+            class="component-button"
+            data-component="E"
+          >
+            E
+          </button>
+        </div>
+
+        <div class="component-controls">
+          <span class="component-label">快速縮放</span>
+
+          <button type="button" class="zoom-button" data-zoom="full">
+            完整
+          </button>
+
+          <button type="button" class="zoom-button" data-zoom="event">
+            發震附近
+          </button>
+
+          <button type="button" class="zoom-button" data-zoom="ps">
+            P/S 附近
+          </button>
+        </div>
+
+        <div id="waveform" class="waveform"></div>
+
+        <div id="status" class="status">
+          初始化中...
+        </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
